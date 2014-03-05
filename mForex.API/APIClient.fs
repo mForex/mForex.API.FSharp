@@ -77,6 +77,11 @@ type APIClient(connectToReal: bool) =
         client.RequestInstrumentSettings()
         |> Async.AwaitTask
 
+     /// Sends request to the server for trading hours for particular instrument.
+    member this.RequestSessions(symbol) = 
+        client.RequestSessions(symbol)
+        |> Async.AwaitTask
+    
     /// Sends request to the server for current margin level.
     member this.RequestMarginLevel() = 
         client.RequestMarginLevel()
