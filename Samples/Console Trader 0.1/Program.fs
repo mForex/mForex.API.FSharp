@@ -40,9 +40,9 @@ type Api() =
         
 
 [<EntryPoint>]
-let main argv = 
-    let login = 77000005
-    let password = "Haslo123"
+let main argv =     
+    let login = 0               // Enter your login here    
+    let password = "password"   // Enter your password here
     
     let api = Api()
     
