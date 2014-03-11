@@ -8,9 +8,9 @@ open mForex.API
 type CApiClient = mForex.API.APIClient
 type CApiConnection = mForex.API.APIConnection
 
-type APIClient(connectToReal: bool) = 
+type APIClient(server: ServerType) = 
     
-    let connection = CApiConnection(ServerType.Demo)
+    let connection = CApiConnection(server)
     let client = new CApiClient(connection)
 
     let ConvTask (t: Task) = t.ContinueWith(
