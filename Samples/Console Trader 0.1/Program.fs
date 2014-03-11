@@ -8,7 +8,7 @@ type Message = | Start of Credentials: int * string
 
 type Api() =        
     
-    let client = APIClient(false)
+    let client = APIClient(ServerType.Demo)
     
     let connect login password = async {
             do! client.Connect()

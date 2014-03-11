@@ -42,11 +42,11 @@
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="mForex.API">
-      <HintPath>..\..\packages\mForex.API.0.9.6.19469\lib\net45\mForex.API.dll</HintPath>
+      <HintPath>..\..\packages\mForex.API.0.9.6.28952\lib\net45\mForex.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mForex.FSharp.API">
-      <HintPath>..\..\packages\mForex.API.FSharp.0.9.4.26838\lib\net45\mForex.FSharp.API.dll</HintPath>
+      <HintPath>..\..\packages\mForex.API.FSharp.0.9.6.29504\lib\net45\mForex.FSharp.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />

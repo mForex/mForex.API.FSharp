@@ -12,7 +12,7 @@ type Message =
 
 type Api() =        
     
-    let client = APIClient(true)
+    let client = APIClient(ServerType.Demo)
     
     let connect login password = async {
             do! client.Connect()
