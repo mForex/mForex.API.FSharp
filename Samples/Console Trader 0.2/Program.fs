@@ -4,16 +4,25 @@ open System.Threading
 open System
 
 type Agent<'a> = MailboxProcessor<'a>
-type Message = | Start of Credentials: int * string
+
+type Message =
+    | Start of Credentials: int * string
+    | Trade of Order: string * TradeCommand * float
+
 
 type Api() =        
     
-    let client = APIClient(false)
+    let client = APIClient(true)
     
     let connect login password = async {
             do! client.Connect()
             let! loggedIn = client.Login(login, password)
             return loggedIn
+        }
+    
+    let trade symbol command volume = async {
+            let! res = client.Trade.OpenOrder(symbol, command, 0.0, 0.0, 0.0, volume)
+            return res
         }
 
     let agent = Agent.Start(fun a -> async {
@@ -21,9 +30,13 @@ type Api() =
                 let! msg = a.Receive()
                 
                 match msg with
-                | Start (login,password)  -> 
+                | Start (login,password)  ->
                     let! r  = (connect login password)
                     printfn "Logged in: %b" r.LoggedIn
+                
+                | Trade (symbol, command, volume) -> 
+                    let! r = (trade symbol command volume)
+                    printfn "Trade successful. order id: %i" r.Order
         })
 
     
@@ -37,6 +50,9 @@ type Api() =
             p |> Array.toList 
               |> List.filter (fun x -> x.Symbol = symbol)
               |> List.iter (fun x -> printfn "%A %.5f/%.5f %A" x.Symbol x.Bid x.Ask x.Time))
+    
+    member this.Trade(symbol, command, volume) =
+        agent.Post(Trade (symbol, command, volume) )
         
 
 [<EntryPoint>]
@@ -44,10 +60,16 @@ let main argv =
     let login = 0                      // Enter your login here    
     let password = "password"          // Enter your password here
     
+    let symbol = "EURUSD"           // Enter instrument to be bought
+    let volume = 0.1                // Select volume
+    let command = TradeCommand.Buy      
+    
     let api = Api()
     
     api.Connect(login, password)    
-    api.Stream "EURUSD"
-
+    api.Stream symbol
+    
+    api.Trade(symbol, command, volume)
+    
     Console.ReadKey() |> ignore
     0
