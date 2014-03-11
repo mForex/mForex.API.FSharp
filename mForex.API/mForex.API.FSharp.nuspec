@@ -6,7 +6,7 @@
     <authors>Marcin Deptuła, Wojciech Stokowiec, Kamil Borowski</authors>
     <owners>Dom Maklerski mBanku S.A.</owners>
     <summary>@summary@</summary>
-    <licenseUrl>https://github.com/mForex/mForex.API.FSharp/master/LICENSE</licenseUrl>
+    <licenseUrl>https://raw.github.com/mForex/mForex.API.FSharp/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/mForex/mForex.API.FSharp</projectUrl>
     <iconUrl>http://mforex.pl/Media/Default/images/mLogo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
