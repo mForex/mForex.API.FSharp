@@ -57,8 +57,8 @@ type Api() =
 
 [<EntryPoint>]
 let main argv =     
-    let login = 0                      // Enter your login here    
-    let password = "password"          // Enter your password here
+    let login = 0                   // Enter your login here    
+    let password = "password"       // Enter your password here
     
     let symbol = "EURUSD"           // Enter instrument to be bought
     let volume = 0.1                // Select volume
