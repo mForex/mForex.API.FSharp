@@ -13,7 +13,7 @@ Install-Package mForex.API.FSharp
 ### Logging in 
 Once you have your account ready, you can log in to our server using following code:
 
-```fsharp
+```fsharp 
 //Firstly, you have to create an APIClient object, which will be used to communicate with the server.
 let client = APIClient(ServerType.Demo)
 
@@ -28,7 +28,7 @@ let workflow = async {
 ### Requesting for quotes
 Once connection has been established, data stream has been setup and is ready to be registered for. ```APIClient``` provides events which can be subscribed to. For example, to receive and process every incoming tick one could:
 
-```fsharp
+```fsharp 
 client.Ticks.Add(fun p -> 
         p |> Seq.ofArray
           |> Seq.filter (fun x -> x.Symbol = symbol)
@@ -38,7 +38,7 @@ client.Ticks.Add(fun p ->
 ### Trade requests
 ```APIClient``` offers an easy way to manage your orders through an ```ITradeProvider``` interface. For example, sample code which closes all opened positions on EURUSD instrument could look like this:
 
-```fsharp
+```fsharp 
 let trades = (client.RequestOpenTrades() |> Async.RunSynchronously).Trades
 let workflow = trades 
                |> Seq.ofArray
