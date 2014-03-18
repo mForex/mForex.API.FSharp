@@ -47,9 +47,8 @@ type Api() =
 
     member this.Stream symbol =
         client.Ticks.Add(fun p -> 
-            p |> Array.toList 
-              |> List.filter (fun x -> x.Symbol = symbol)
-              |> List.iter (fun x -> printfn "%A %.5f/%.5f %A" x.Symbol x.Bid x.Ask x.Time))
+            p |> Seq.filter (fun x -> x.Symbol = symbol)
+              |> Seq.iter (fun x -> printfn "%A %.5f/%.5f %A" x.Symbol x.Bid x.Ask x.Time))
     
     member this.Trade(symbol, command, volume) =
         agent.Post(Trade (symbol, command, volume) )

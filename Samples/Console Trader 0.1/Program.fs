@@ -34,15 +34,14 @@ type Api() =
 
     member this.Stream symbol =
         client.Ticks.Add(fun p -> 
-            p |> Array.toList 
-              |> List.filter (fun x -> x.Symbol = symbol)
-              |> List.iter (fun x -> printfn "%A %.5f/%.5f %A" x.Symbol x.Bid x.Ask x.Time))
+            p |> Seq.filter (fun x -> x.Symbol = symbol)
+              |> Seq.iter (fun x -> printfn "%A %.5f/%.5f %A" x.Symbol x.Bid x.Ask x.Time))
         
 
 [<EntryPoint>]
 let main argv =     
-    let login = 0                      // Enter your login here    
-    let password = "password"          // Enter your password here
+    let login = 0                   // Enter your login here    
+    let password = "password"       // Enter your password here
     
     let api = Api()
     
