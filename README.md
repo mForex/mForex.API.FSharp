@@ -11,7 +11,7 @@ Install-Package mForex.API.FSharp
 ```
 
 ### Logging in 
-Once you have your account ready, you can log in to our server using following code:
+Once you have your account ready, you can log in to our server are register for EURUSD ticks using following code:
 
 ```fsharp 
 //Firstly, you have to create an APIClient object, which will be used to communicate with the server.
@@ -22,11 +22,12 @@ let client = APIClient(ServerType.Demo)
 let workflow = async {
     do! client.Connect()
     let! result = client.Login(login, password)
+    let! reg = client.RequestTickRegistration("EURUSD", RegistrationAction.Register)
 }
 ```
 
 ### Requesting for quotes
-Once connection has been established, data stream has been setup and is ready to be registered for. ```APIClient``` provides events which can be subscribed to. For example, to receive and process every incoming tick one could:
+Once connection has been established and tick have been registered for, Ticks event, provided by ```APIClient```, is ready to be subscribed for. For example, to receive and process every incoming tick of EURUSD one could:
 
 ```fsharp 
 client.Ticks.Add(fun p -> 
