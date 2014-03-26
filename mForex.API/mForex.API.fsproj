@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mForex.API">
-      <HintPath>..\packages\mForex.API.0.9.6.28952\lib\net45\mForex.API.dll</HintPath>
+      <HintPath>..\packages\mForex.API.0.9.6.17120\lib\net45\mForex.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />

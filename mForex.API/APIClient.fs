@@ -97,6 +97,16 @@ type APIClient(server: ServerType) =
         client.RequestOpenTrades()
         |> Async.AwaitTask
 
+    /// Sends request to the server for logged in user account settings.
+    member this.RequestAccountSettings() = 
+        client.RequestAccountSettings()
+        |> Async.AwaitTask
+
+    /// Registrs for tick stream for a given instrument
+    member this.RequestTickRegistration(symbol, action) = 
+        client.RequestTickRegistration(symbol, action)
+        |> Async.AwaitTask
+
     interface mForex.API.FSharp.ITradeProvider with
         
         member this.OpenOrder(symbol, tradeCommand, price, stopLoss, takeProfit, volume) = 

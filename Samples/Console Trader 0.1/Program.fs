@@ -23,7 +23,10 @@ type Api() =
                 match msg with
                 | Start (login,password)  -> 
                     let! r  = (connect login password)
-                    printfn "Logged in: %b" r.LoggedIn
+                    printfn "Logged in: %O" r.LoginStatus
+
+                    let! reg = client.RequestTickRegistration("EURUSD", RegistrationAction.Register)
+                    ()
         })
 
     
