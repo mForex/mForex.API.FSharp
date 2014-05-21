@@ -69,5 +69,5 @@ Licensed under the [MIT License](https://raw.github.com/mForex/mForex.API.FSharp
 
 [1]: http://www.mforex.pl/
 [2]: https://github.com/mForex/mForex.API
-[3]: https://github.com/mForex/mForex.API.FSharp
+[3]: https://github.com/mForex/mForex.API.Matlab
 [4]: https://github.com/mForex/mForex.API.TypeScript
